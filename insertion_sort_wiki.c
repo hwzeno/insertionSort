@@ -29,9 +29,8 @@ void insertion_sort(int array[], int first, int last)
 		temp = array[i];//与已排序的数逐一比较，大于temp时，该数向后移
 		for(j = i - 1; j >= first && array[j] > temp; j--)
 		//当first=0,j循环到-1时，由于短路求值，不会运算array[-1]
-		{
 			array[j + 1] = array[j];
-			array[j] = temp;//被排序数放到正确的位置
-		}
+		array[j + 1] = temp;//被排序数放到正确的位置
+		
 	}
 }
