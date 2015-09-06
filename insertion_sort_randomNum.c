@@ -7,23 +7,24 @@
 
 #include<stdio.h>
 #include<time.h>
-void insertionSort(int array[], int len);
+#include<string.h>
+void insertionSort(int array[]);
 int main()
 {
 	int i = 0;
 	int arr[100000] = {0};
 	FILE* fr;
 	fr = fopen("randomNum.txt", "r");
-	while(fscanf(fr,"%d", &arr[i]) != EOF)
+	for(i = 0; i < 100000; i++)
 	{
-		i++;
+		fscanf(fr,"%d", &arr[i]);
 	}
 
 	clock_t bg, ed;
 	bg = clock();
-	insertionSort(arr, sizeof(arr)/sizeof(arr[0]));
+	insertionSort(arr);
 	ed = clock();
-	printf("time cost for%.15f", (double)(ed-bg)/CLOCKS_PER_SEC);
+	printf("time cost for%.15f\n", (double)(ed-bg)/CLOCKS_PER_SEC);
 
 
 	FILE* fw;
@@ -38,11 +39,13 @@ int main()
 
 	return 0;
 }
-void insertionSort(int array[], int len)
+void insertionSort(int array[])
 {
 	//newPoi待确定位置的数组元素的下标，逐渐递减，直到数组的最后一个元素
 	//current为array[newPoi]的前驱的元素的下标，逐渐递减，来定位要与array[newPoi]比较的元素值
-	
+	printf("array:%d\n",sizeof(array));
+	int len = sizeof(*array)/sizeof(array[0]);
+	printf("%d\n", len);
 	int newPoi = 0, current = 0, tempNew = 0, tempVal = 0;
 	for (newPoi = 1; newPoi < len; newPoi++)
 	{

@@ -5,12 +5,13 @@
 > Created Time: 2015年09月03日 星期四 16时42分20秒
 ********************************/
 #include<stdio.h>
-void insertionSort(int array[]);
+void insertionSort(int array[], int len);
 int main()
 {
 	int i;
 	int arr[6] = { 4, 1,1,1,1, 1 };
-	insertionSort(arr);
+	int length = sizeof(arr)/sizeof(arr[0]);
+	insertionSort(arr, length);
 	for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
 	{
 		printf("%d\t", arr[i]);
@@ -19,12 +20,10 @@ int main()
 	return 0;
 }
 
-void insertionSort(int array[])
+void insertionSort(int array[], int len)
 {
 	//newPoi待确定位置的数组元素的下标，逐渐递减，直到数组的最后一个元素
 	//current为array[newPoi]的前驱的元素的下标，逐渐递减，来定位要与array[newPoi]比较的元素值
-	int len = 0;
-	len = sizeof(array)/sizeof(array[0]);
 	int newPoi = 0, current = 0, tempNew = 0, tempVal = 0;
 	for (newPoi = 1; newPoi < len; newPoi++)
 	{
