@@ -1,4 +1,4 @@
-/*********************************
+/********************************
     > File Name: Binary_Insertion_Sort.c
     > Author: Zeno
     > Mail:340562424@qq.com 
