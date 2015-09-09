@@ -8,7 +8,7 @@
 #include<time.h>
 #define N 100001
 int arr[N]; //大数组定义为全局变量
-void insertionSort(int array[], int len);
+void BInsertSort(int array[], int lenght);
 int main()
 {
 	int i = 1;
@@ -24,7 +24,7 @@ int main()
 	//}
 	clock_t bg, ed;
 	bg = clock();
-	insertionSort(arr, N - 1);
+	BInsertSort(arr, N - 1);
 	ed = clock();
 	printf("cost time for:%.15f\n", (double)(ed - bg)/CLOCKS_PER_SEC);
 	FILE *fw;
@@ -40,38 +40,32 @@ int main()
 	return 0;
 	
 }
-void insertionSort(int array[], int len)
+
+void BInsertSort(int array[], int length)//所谓的折半，是对已经排好序的部分折半
 {
-	//newPoi待确定位置的数组元素的下标，逐渐递减，直到数组的最后一个元素
-	//current为array[newPoi]的前驱的元素的下标，逐渐递减，来定位要与array[newPoi]比较的元素值
-	int newPoi = 0, current = 0, tempNew = 0, tempVal = 0;
-	for (newPoi = 2; newPoi <= len; newPoi++)//<=
+	int i = 0;
+	int j = 0;
+	int low = 0;
+	int high = 0;
+	int m = 0;
+	for(i = 2; i <= length; ++i)
 	{
-		tempNew = newPoi;
-		tempVal = array[newPoi];
-		current = newPoi - 1;
-		int flag = 0;
-		while (array[current] > tempVal)
+		array[0] = array[i]; 
+		low = 1;
+		high = i -1;
+		while(low <= high)
 		{
-			//循环交换
-			array[tempNew] = array[current];
-			if (current == 0)//防止下標越界
-			{
-				array[current] = tempVal;
-				flag = 1;
-				break;
-			}
+			m = (low+high)/2;
+			if(array[0] < array[m])
+				high = m - 1;
 			else
-			{
-				tempNew--;
-				current--;
-			}
-		}
-		if(flag == 0)//防止重複賦值，與if(current == 0)互斥的語句;开始写的是if(current != 0),发现1， 5， 1， 4, 6,不能很好排序
-			//用flag解决了两个if语句互斥的问题
-		array[current + 1] = tempVal;
-	}
-	
-}
+				low = m + 1;
+		}//while
+		for(j = i - 1; j >= high + 1; --j)
+			array[j + 1] = array[j];
+		array[high + 1] = array[0];
+	}//for
+}//BInsertSort
+
 
 

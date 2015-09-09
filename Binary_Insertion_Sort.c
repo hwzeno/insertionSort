@@ -4,6 +4,7 @@
     > Mail:340562424@qq.com 
     > Created Time: 2015年09月07日 星期一 10时40分53秒
  ********************************/
+//严蔚敏版插入排序
 #include<stdio.h>
 void BInsertSort(int array[], int length);
 int main()
