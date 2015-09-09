@@ -4,6 +4,7 @@
 > Mail:340562424@qq.com
 > Created Time: 2015年09月03日 星期四 16时42分20秒
 ********************************/
+//自己写的
 #include<stdio.h>
 void insertionSort(int array[], int len);
 int main()

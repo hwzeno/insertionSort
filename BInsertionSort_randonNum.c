@@ -6,6 +6,7 @@
  ********************************/
 #include<stdio.h>
 #include<time.h>
+#include<stdlib.h>
 #define N 100001
 int arr[N]; //大数组定义为全局变量
 void BInsertSort(int array[], int lenght);
@@ -14,6 +15,11 @@ int main()
 	int i = 1;
 	FILE *fr;
 	fr = fopen("randomNum.txt", "r");
+	if(fr == NULL)
+	{
+		perror("fopen");
+		exit(-1);
+	}
 	for(i = 1; i < N; i ++)
 	{
 		fscanf(fr, "%d", &arr[i]);
